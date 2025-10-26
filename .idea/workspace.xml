@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54c9159-7110-4840-9e80-d17c0abf80a7" name="Changes" comment="" />
+    <list default="true" id="d54c9159-7110-4840-9e80-d17c0abf80a7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,12 +25,12 @@
     &quot;assignee&quot;: &quot;SAbde03&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/RmiliYahya1/Evaluation1-Architechture-des-composant-d-entreprise.git&quot;,
-    &quot;accountId&quot;: &quot;52d76e5c-e595-435c-bf0b-62b8448c7278&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/SAbde03/evaluation.git",
+    "accountId": "52d76e5c-e595-435c-bf0b-62b8448c7278"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -45,14 +48,14 @@
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/EMSI/Evaluation1-Architechture-des-composant-d-entreprise/Exercice1",
+    "last_opened_file_path": "C:/EMSI/Evaluation/Exercice1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
@@ -89,6 +92,7 @@
       <workItem from="1761393079557" duration="702000" />
       <workItem from="1761393797707" duration="59000" />
       <workItem from="1761393876839" duration="36000" />
+      <workItem from="1761409959953" duration="75000" />
     </task>
     <servers />
   </component>
