@@ -1,12 +1,16 @@
 package ma.projet.presentation;
 
 import ma.projet.classes.Categorie;
+import ma.projet.classes.Commande;
 import ma.projet.classes.Produit;
 import ma.projet.services.CategorieService;
+import ma.projet.services.CommandeService;
 import ma.projet.services.ProduitService;
+import org.hibernate.type.LocalDateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,12 +19,15 @@ public class Application {
 
     private final CategorieService categorieService;
     private final ProduitService produitService;
+    private final CommandeService commandeService;
+
     private final Scanner scanner;
 
     @Autowired
-    public Application(CategorieService categorieService, ProduitService produitService) {
+    public Application(CategorieService categorieService, ProduitService produitService, CommandeService commandeService) {
         this.categorieService = categorieService;
         this.produitService = produitService;
+        this.commandeService = commandeService;
         this.scanner = new Scanner(System.in);
     }
 
@@ -49,6 +56,9 @@ public class Application {
                 case 6:
                     listProductsByCategory();
                     break;
+                case 7:
+                    addProduct();
+                    break;
                 case 0:
                     running = false;
                     System.out.println("Au revoir!");
@@ -68,10 +78,27 @@ public class Application {
         System.out.println("4. Supprimer une catégorie");
         System.out.println("5. Lister les produits");
         System.out.println("6. Lister les produits par catégorie");
+        System.out.println("7. Ajouter un produit");
         System.out.println("0. Quitter");
         System.out.println("===========================");
     }
 
+
+    private void listCommande() {
+        List<Commande> commandes = commandeService.findAll();
+
+        if (commandes.isEmpty()) {
+            System.out.println("Veuillez entrer une nouvelle commande.");
+            return;
+        }
+
+        System.out.println("\n===== Liste des Catégories =====");
+        for (Commande commande : commandes) {
+            System.out.println("ID: " + commande.getId() +
+                    " | Date: " + commande.getDate() +
+                    " | Ligne de commande: " + commande.getLignes());
+        }
+    }
     private void listCategories() {
         List<Categorie> categories = categorieService.findAll();
         if (categories.isEmpty()) {
@@ -101,6 +128,7 @@ public class Application {
             System.out.println("Erreur lors de l'ajout de la catégorie.");
         }
     }
+
 
     private void updateCategory() {
         System.out.println("\n===== Modifier une Catégorie =====");
@@ -223,5 +251,57 @@ public class Application {
         }
     }
 
-    // Main method moved to Main class
+    private void addProduct() {
+        System.out.println("\n===== Ajouter un Produit =====");
+
+        // Vérifier s'il y a des catégories disponibles
+        List<Categorie> categories = categorieService.findAll();
+        if (categories.isEmpty()) {
+            System.out.println("Aucune catégorie disponible. Veuillez d'abord créer une catégorie.");
+            return;
+        }
+
+        // Afficher les catégories disponibles
+        System.out.println("\n===== Catégories disponibles =====");
+        for (Categorie categorie : categories) {
+            System.out.println("ID: " + categorie.getId() + 
+                               " | Code: " + categorie.getCode() + 
+                               " | Libellé: " + categorie.getLibelle());
+        }
+
+        // Demander les informations du produit
+        String reference = getStringInput("Entrez la référence du produit: ");
+        float prix = getFloatInput("Entrez le prix du produit: ");
+        int categorieId = getIntInput("Entrez l'ID de la catégorie: ");
+
+        // Récupérer la catégorie sélectionnée
+        Categorie categorie = categorieService.findById(categorieId);
+        if (categorie == null) {
+            System.out.println("Catégorie non trouvée.");
+            return;
+        }
+
+        // Créer et sauvegarder le produit
+        Produit produit = new Produit(reference, prix, categorie);
+        boolean success = produitService.create(produit);
+
+        if (success) {
+            System.out.println("Produit ajouté avec succès!");
+        } else {
+            System.out.println("Erreur lors de l'ajout du produit.");
+        }
+    }
+
+    private float getFloatInput(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                float value = Float.parseFloat(scanner.nextLine());
+                return value;
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un nombre valide.");
+            }
+        }
+    }
+
 }
