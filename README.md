@@ -15,3 +15,9 @@ https://github.com/user-attachments/assets/72c010af-f344-4635-bb58-60ba1193679b
 
 https://github.com/user-attachments/assets/3f17128d-fa51-464f-921a-be81945f5ce1
 
+**Exercice 3**
+
+*Presentation*
+
+https://github.com/user-attachments/assets/aee32e0c-8586-4c30-a098-b24f3b1e91e4
+
